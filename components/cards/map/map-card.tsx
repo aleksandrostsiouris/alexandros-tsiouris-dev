@@ -38,7 +38,7 @@ export const MapCard = () => {
         />
       </Head>
 
-      <div className='w-full h-full rounded-card'>
+      <div className='w-full h-full rounded-card relative'>
         <Map
           center={[23.774647768336976, 37.89796815467385]}
           zoom={[9]}

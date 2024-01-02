@@ -7,8 +7,7 @@ export const ThemeProvider = (
 ) => {
   return (
     <NTP
-      attribute='class'
-    >
+      attribute='class'>
       {children}
     </NTP>
   )
