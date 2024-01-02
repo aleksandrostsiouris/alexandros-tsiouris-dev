@@ -18,7 +18,6 @@ export const EmailCard = () => {
       className='hover:cursor-pointer'
       onMouseDown={e => e.stopPropagation()}
       onTouchStart={e => e.stopPropagation()}
-
       onClick={() => { window.location.href = "mailto:alexandros.tsiouris.dev@gmail.com" }}>
       <MdAlternateEmail className="w-12 h-12 dark:text-primary-foreground" />
     </ motion.div>
