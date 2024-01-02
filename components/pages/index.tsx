@@ -9,6 +9,7 @@ import { motion, stagger, useAnimate } from 'framer-motion';
 import { LinkedInCard } from '../cards/linkedin-card';
 import { MapCard } from '../cards/map/map-card';
 import { SpotifyCard } from '../cards/spotify-card';
+import { EmailCard } from '../cards/email-card';
 
 export const Index = () => {
   const [introIsDragging, setIntroIsDragging] = useState<boolean>(false);
@@ -27,7 +28,7 @@ export const Index = () => {
       { i: "theme", x: 0, y: 1, w: 1, h: 1 },
       { i: "linkedin", x: 1, y: 4, w: 1, h: 1 },
       { i: "spotify", x: 0, y: 0, w: 2, h: 1 },
-      { i: "f", x: 1, y: 5, w: 1, h: 1 },
+      { i: "email", x: 1, y: 5, w: 1, h: 1 },
     ],
     sm: [
       { i: "intro", x: 1, y: 2, w: 2, h: 2 },
@@ -36,7 +37,7 @@ export const Index = () => {
       { i: "theme", x: 0, y: 0, w: 1, h: 1 },
       { i: "linkedin", x: 1, y: 1, w: 1, h: 1 },
       { i: "spotify", x: 1, y: 0, w: 2, h: 1 },
-      { i: "f", x: 0, y: 3, w: 1, h: 1 },
+      { i: "email", x: 0, y: 3, w: 1, h: 1 },
     ],
     lg: [
       { i: "intro", x: 0, y: 0, w: 2, h: 2 },
@@ -45,17 +46,9 @@ export const Index = () => {
       { i: "theme", x: 0, y: 2, w: 1, h: 1 },
       { i: "linkedin", x: 2, y: 1, w: 1, h: 1 },
       { i: "spotify", x: 1, y: 2, w: 2, h: 1 },
-      { i: "f", x: 3, y: 0, w: 1, h: 1 },
+      { i: "email", x: 3, y: 0, w: 1, h: 1 },
     ],
   };
-
-  // useEffect(() => {
-  //   (async () => {
-  //     const res = await fetch("/config");
-  //     const { mapToken } = await res.json();
-  //     setMapToken(mapToken);
-  //   })()
-  // }, [])
 
   return (
     <main className='w-full h-full flex justify-center items-center text-primary-foreground select-none'>
@@ -110,9 +103,7 @@ export const Index = () => {
             <motion.div
               key="map"
               className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab'>
-
               <MapCard />
-
             </motion.div>
             <motion.div
               key="github"
@@ -135,9 +126,9 @@ export const Index = () => {
               <SpotifyCard />
             </motion.div>
             <motion.div
-              key="f"
+              key="email"
               className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab'>
-              f
+              <EmailCard />
             </motion.div>
           </ResponsiveGridLayout>
         </motion.div>

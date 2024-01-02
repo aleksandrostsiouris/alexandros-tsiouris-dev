@@ -36,7 +36,7 @@ export default function RootLayout({
     <html
       suppressHydrationWarning
       lang="en">
-      <Header />
+      {/* <Header /> */}
       <ThemeProvider>
         <body className={cn(
           pacifico.variable,
