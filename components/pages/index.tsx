@@ -15,7 +15,7 @@ export const Index = () => {
   const [isMounted, setIsMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const ResponsiveGridLayout = useMemo(() => WidthProvider(RGL), []);
-  const [mapToken, setMapToken] = useState<string | undefined>();
+  // const [mapToken, setMapToken] = useState<string | undefined>();
   const staggerItems = stagger(0.1, { startDelay: 0.15 });
   const [scope, animate] = useAnimate();
 
@@ -49,13 +49,13 @@ export const Index = () => {
     ],
   };
 
-  useEffect(() => {
-    (async () => {
-      const res = await fetch("/config");
-      const { mapToken } = await res.json();
-      setMapToken(mapToken);
-    })()
-  }, [])
+  // useEffect(() => {
+  //   (async () => {
+  //     const res = await fetch("/config");
+  //     const { mapToken } = await res.json();
+  //     setMapToken(mapToken);
+  //   })()
+  // }, [])
 
   return (
     <main className='w-full h-full flex justify-center items-center text-primary-foreground select-none'>
@@ -110,10 +110,9 @@ export const Index = () => {
             <motion.div
               key="map"
               className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab'>
-              {
-                mapToken &&
-                <MapCard mapToken={mapToken} />
-              }
+
+              <MapCard />
+
             </motion.div>
             <motion.div
               key="github"

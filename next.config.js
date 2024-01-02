@@ -1,13 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: process.env.NODE_ENV === 'production' ?
-    "/alexandros-tsiouris-dev" :
-    undefined,
+  basePath: process.env.NEXT_PUBLIC_ROOT_DIR,
   images: {
     unoptimized: true,
-    loader: 'akamai',
-    path: ''
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "**locahost",
+        port: "3000"
+      },
+      {
+        protocol: 'https',
+        hostname: "**github.io"
+      }
+    ]
   },
 }
 

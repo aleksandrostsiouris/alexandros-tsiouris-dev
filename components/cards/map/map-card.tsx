@@ -9,13 +9,11 @@ import Image from "next/image"
 // https://github.com/alex3165/react-mapbox-gl/blob/master/docs/API.md
 // https://docs.mapbox.com/api/maps/styles/
 
-export const MapCard = (
-  { mapToken }: { mapToken: string }
-) => {
+export const MapCard = () => {
   const { theme } = useTheme();
   const Map = useMemo(() => {
     return ReactMapboxGl({
-      accessToken: mapToken,
+      accessToken: process.env.NEXT_PUBLIC_MAPBOX_TOKEN!,
       keyboard: false,
       scrollZoom: false,
       doubleClickZoom: false,
@@ -26,10 +24,7 @@ export const MapCard = (
       boxZoom: false,
       interactive: false
     })
-  }, [mapToken]);
-  // useEffect(() => {
-
-  // }, [])
+  }, []);
 
   return (
     <div
@@ -76,7 +71,7 @@ export const MapCard = (
             animate={{ opacity: 1 }}>
             <Image
               className='bg-transparent'
-              src="/memoji.png"
+              src="/alexandros-tsiouris-dev/memoji.png"
               alt="memoji"
               fill />
           </motion.div>
