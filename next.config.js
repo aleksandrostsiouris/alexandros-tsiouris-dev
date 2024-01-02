@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: "/githu-pages"
+  basePath: "/alexandros-tsiouris-dev"
 }
 
 module.exports = nextConfig

@@ -15,8 +15,6 @@ export const ThemeCard = () => {
 
   // if (!mounted) return null;
 
-  console.log(theme)
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
