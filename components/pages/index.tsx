@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 import "../../app/grid-layout.css";
 import { Layout, WidthProvider, Responsive as RGL } from "react-grid-layout";
 import { IntroCard } from '../cards/intro-card';
@@ -11,12 +11,11 @@ import { MapCard } from '../cards/map/map-card';
 import { SpotifyCard } from '../cards/spotify-card';
 import { EmailCard } from '../cards/email-card';
 
-export const Index = () => {
+export const Index = (
+  { mapToken }: { mapToken: string }
+) => {
   const [introIsDragging, setIntroIsDragging] = useState<boolean>(false);
-  const [isMounted, setIsMounted] = useState(false);
-  const containerRef = useRef<HTMLDivElement | null>(null);
   const ResponsiveGridLayout = useMemo(() => WidthProvider(RGL), []);
-  // const [mapToken, setMapToken] = useState<string | undefined>();
   const staggerItems = stagger(0.1, { startDelay: 0.15 });
   const [scope, animate] = useAnimate();
 
@@ -94,7 +93,8 @@ export const Index = () => {
               xxl: 4
             }}
             rowHeight={231}
-            useCSSTransforms={isMounted}>
+            useCSSTransforms
+          >
             <motion.div
               key="intro"
               className='item flex border-2 border-zinc-200 dark:border-neutral-700 rounded-card w-full h-full items-center bg-white dark:bg-almost-primary justify-center hover:cursor-grab'>
@@ -103,7 +103,7 @@ export const Index = () => {
             <motion.div
               key="map"
               className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab'>
-              <MapCard />
+              <MapCard mapToken={mapToken} />
             </motion.div>
             <motion.div
               key="github"

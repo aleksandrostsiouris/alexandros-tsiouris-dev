@@ -1,7 +1,8 @@
 "use client"
 import Head from 'next/head';
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 import ReactMapboxGl from 'react-mapbox-gl'
+import MapboxGl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
@@ -9,13 +10,14 @@ import Image from "next/image"
 // https://github.com/alex3165/react-mapbox-gl/blob/master/docs/API.md
 // https://docs.mapbox.com/api/maps/styles/
 
-export const MapCard = () => {
-  const [mounted, setIsMounted] = useState<boolean>(false);
+export const MapCard = (
+  { mapToken }: { mapToken: string }
+) => {
   const { theme } = useTheme();
 
   const Map = useMemo(() => {
     return ReactMapboxGl({
-      accessToken: process.env.NEXT_PUBLIC_MAPBOX_TOKEN!,
+      accessToken: mapToken,
       keyboard: false,
       scrollZoom: false,
       doubleClickZoom: false,
@@ -24,33 +26,26 @@ export const MapCard = () => {
       minZoom: 0,
       touchZoomRotate: false,
       boxZoom: false,
-      interactive: false
+      interactive: false,
     })
-  }, [mounted]);
-  useEffect(() => {
-    setIsMounted(true);
   }, []);
-
-  if (!mounted) return null;
 
   return (
     <div
-      // onMouseDown={e => e.stopPropagation()}
-      // onTouchStart={e => e.stopPropagation()}
-      className='w-full h-full relative'>
+      className='w-full h-full'>
       <Head>
         <link
           href="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css"
           rel="stylesheet"
         />
       </Head>
-
-      <div className='w-full h-full rounded-card relative'>
+      <div className='w-full h-full'>
         <Map
+          onStyleLoad={(map) => map.resize()}
           center={[23.774647768336976, 37.89796815467385]}
           zoom={[9]}
+          className='w-full h-full rounded-card'
           style={theme === 'dark' ? 'mapbox://styles/mapbox/dark-v11' : "mapbox://styles/mapbox/light-v11"}
-          className=' rounded-card w-full h-full'
         />
       </div>
       <motion.div
