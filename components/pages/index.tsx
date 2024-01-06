@@ -28,23 +28,20 @@ export const Index = (
   }, [])
 
   useEffect(() => {
-    (async () => {
-      await animate('span',
-        {
-          opacity: 1,
-          visibility: "visible"
-        },
-        {
-          delay: stagger(0.1,
-            {
-              startDelay: 0.3,
-              ease: "easeOut",
-              from: isMobile ? 'first' : 'center'
-            })
-        });
-    })()
-
-  }, [])
+    animate('span',
+      {
+        opacity: 1,
+        visibility: "visible"
+      },
+      {
+        delay: stagger(0.1,
+          {
+            startDelay: 0.3,
+            ease: "easeOut",
+            from: isMobile ? 'first' : 'center'
+          })
+      });
+  }, [animate, isMobile])
 
   const layouts: { [key: string]: Layout[] } = {
     xs: [

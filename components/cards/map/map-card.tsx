@@ -26,7 +26,7 @@ export const MapCard = (
       boxZoom: false,
       interactive: false,
     })
-  }, []);
+  }, [mapToken]);
 
   return (
     <div
