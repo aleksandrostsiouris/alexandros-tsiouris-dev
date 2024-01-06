@@ -10,7 +10,9 @@ import Image from "next/image"
 // https://docs.mapbox.com/api/maps/styles/
 
 export const MapCard = () => {
+  const [mounted, setIsMounted] = useState<boolean>(false);
   const { theme } = useTheme();
+
   const Map = useMemo(() => {
     return ReactMapboxGl({
       accessToken: process.env.NEXT_PUBLIC_MAPBOX_TOKEN!,
@@ -24,7 +26,12 @@ export const MapCard = () => {
       boxZoom: false,
       interactive: false
     })
+  }, [mounted]);
+  useEffect(() => {
+    setIsMounted(true);
   }, []);
+
+  if (!mounted) return null;
 
   return (
     <div

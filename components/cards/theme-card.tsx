@@ -7,13 +7,13 @@ import { Moon } from '../theme-toggle/moon'
 
 export const ThemeCard = () => {
   const { theme, setTheme } = useTheme();
-  // const [mounted, setIsMounted] = useState<boolean>(false);
+  const [mounted, setIsMounted] = useState<boolean>(false);
 
-  // useEffect(() => {
-  //   setIsMounted(true);
-  // }, [])
+  useEffect(() => {
+    setIsMounted(true);
+  }, [])
 
-  // if (!mounted) return null;
+  if (!mounted) return null;
 
   return (
     <motion.div

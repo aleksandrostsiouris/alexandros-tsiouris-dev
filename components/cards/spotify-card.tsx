@@ -1,14 +1,17 @@
 "use client"
 import { useTheme } from 'next-themes'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 export const SpotifyCard = () => {
+  const [mounted, setMounted] = useState<boolean>(false)
   const { theme } = useTheme();
   // const playerRef = useRef<HTMLIFrameElement | null>(null);
 
-  // useEffect(() => {
-  //   if (theme === 'dark') return;
-  // }, [theme])
+  useEffect(() => {
+    setMounted(true);
+  }, [theme]);
+
+  if (!mounted) return null;
 
   return (
     <div className='flex w-full h-full items-center justify-center bg-[#282828] rounded-card'>

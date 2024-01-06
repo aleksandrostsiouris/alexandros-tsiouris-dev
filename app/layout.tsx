@@ -37,18 +37,21 @@ export default function RootLayout({
       suppressHydrationWarning
       lang="en">
       {/* <Header /> */}
-      <ThemeProvider>
-        <body className={cn(
+
+      <body
+        suppressHydrationWarning
+        className={cn(
           pacifico.variable,
           montserrat.className,
           montserrat.variable,
           caveat.variable,
           "bg-background dark:bg-background scrollbar-none"
         )}>
+        <ThemeProvider>
           {children}
+        </ThemeProvider>
 
-        </body>
-      </ThemeProvider>
+      </body>
     </html>
   )
 }
