@@ -85,7 +85,7 @@ export const Index = (
             layouts={layouts}
             draggableCancel='.nonDraggable'
             containerPadding={{
-              xxs: [150, 0],
+              xxs: [50, 0],
               xs: [100, 0],
               sm: [110, 0],
               // md: [150, 0],
