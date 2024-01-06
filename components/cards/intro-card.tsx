@@ -1,4 +1,3 @@
-"use client"
 import React from 'react'
 import Image from "next/image";
 import { AnimatePresence, motion } from 'framer-motion';
@@ -6,16 +5,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 export const IntroCard = (
   { isDragging }: { isDragging: boolean }
 ) => {
-  // const [isDragging, setIsDragging] = useState(false)
-
   return (
-
     <div
-      className='flex flex-col w-full h-full justify-center items-center select-none gap-12 mt-10'
-    // onMouseDown={e => e.stopPropagation()}
-    // onTouchStart={e => e.stopPropagation()}
-    >
-
+      className='flex flex-col w-full h-full justify-center items-center select-none gap-12 mt-10'>
       <AnimatePresence mode='popLayout'>
         {
           isDragging ?

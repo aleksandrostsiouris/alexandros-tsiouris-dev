@@ -19,19 +19,22 @@ export const Index = (
   const [scope, animate] = useAnimate();
 
   useEffect(() => {
-    animate('span',
-      {
-        opacity: 1,
-        visibility: "visible"
-      },
-      {
-        delay: stagger(0.1,
-          {
-            startDelay: 0.3,
-            ease: "easeOut",
-            from: 'center'
-          })
-      })
+    (async () => {
+      await animate('span',
+        {
+          opacity: 1,
+          visibility: "visible"
+        },
+        {
+          delay: stagger(0.1,
+            {
+              startDelay: 0.3,
+              ease: "easeOut",
+              from: 'center'
+            })
+        });
+    })()
+
   }, [])
 
   const layouts: { [key: string]: Layout[] } = {
@@ -69,7 +72,7 @@ export const Index = (
       <div className='flex justify-center items-center w-full h-full max-w-[768px] sm:max-w-[768px] md:max-w-[996px] lg:max-w-[1024px] xl:max-w-[1024px]'>
         <motion.div
           ref={scope}
-          className='flex w-full h-full justify-center items-center'        >
+          className='flex w-full h-full justify-center items-center'>
           <ResponsiveGridLayout
             onDragStart={(_, olditem) => {
               if (olditem.i === 'intro') {

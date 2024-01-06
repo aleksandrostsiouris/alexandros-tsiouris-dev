@@ -1,8 +1,6 @@
-"use client"
 import Head from 'next/head';
 import React, { useMemo, useRef, useState } from 'react'
 import ReactMapboxGl from 'react-mapbox-gl'
-import MapboxGl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
