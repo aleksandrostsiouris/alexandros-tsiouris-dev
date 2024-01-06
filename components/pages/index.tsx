@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import "../../app/grid-layout.css";
 import { Layout, WidthProvider, Responsive as RGL } from "react-grid-layout";
 import { IntroCard } from '../cards/intro-card';
@@ -15,8 +15,17 @@ export const Index = (
   { mapToken }: { mapToken: string }
 ) => {
   const [introIsDragging, setIntroIsDragging] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 400);
   const ResponsiveGridLayout = useMemo(() => WidthProvider(RGL), []);
   const [scope, animate] = useAnimate();
+
+  useLayoutEffect(() => {
+    const isMobile = () => setIsMobile(window.innerWidth <= 400);
+
+    window.addEventListener('resize', isMobile);
+    isMobile();
+    return () => window.removeEventListener('resize', isMobile)
+  }, [])
 
   useEffect(() => {
     (async () => {
@@ -30,7 +39,7 @@ export const Index = (
             {
               startDelay: 0.3,
               ease: "easeOut",
-              from: 'center'
+              from: isMobile ? 'first' : 'center'
             })
         });
     })()
@@ -39,13 +48,13 @@ export const Index = (
 
   const layouts: { [key: string]: Layout[] } = {
     xs: [
-      { i: "intro", x: 0, y: 2, w: 2, h: 2 },
-      { i: "map", x: 0, y: 4, w: 1, h: 2 },
-      { i: "github", x: 1, y: 1, w: 1, h: 1 },
-      { i: "theme", x: 0, y: 1, w: 1, h: 1 },
-      { i: "linkedin", x: 1, y: 4, w: 1, h: 1 },
-      { i: "spotify", x: 0, y: 0, w: 2, h: 1 },
+      { i: "intro", x: 0, y: 0, w: 2, h: 2 },
+      { i: "map", x: 0, y: 1, w: 1, h: 2 },
+      { i: "linkedin", x: 1, y: 3, w: 1, h: 1 },
+      { i: "github", x: 1, y: 4, w: 1, h: 1 },
+      { i: "theme", x: 0, y: 2, w: 1, h: 1 },
       { i: "email", x: 1, y: 5, w: 1, h: 1 },
+      { i: "spotify", x: 0, y: 6, w: 2, h: 1 },
     ],
     sm: [
       { i: "intro", x: 1, y: 2, w: 2, h: 2 },
@@ -79,6 +88,7 @@ export const Index = (
                 setIntroIsDragging(true)
               }
             }}
+            isDraggable={!isMobile}
             onDragStop={() => setIntroIsDragging(false)}
             className="layout w-full h-full"
             isResizable={false}
