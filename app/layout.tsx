@@ -3,7 +3,6 @@ import { Montserrat, Caveat, Pacifico } from 'next/font/google'
 import './globals.css'
 import { cn } from '@/lib/utils'
 import { ThemeProvider } from '@/providers/theme-provider'
-import { Header } from '@/components/header/header'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
