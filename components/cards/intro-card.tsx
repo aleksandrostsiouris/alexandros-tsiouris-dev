@@ -29,7 +29,7 @@ export const IntroCard = (
               </div>
               <Image
                 className='bg-transparent'
-                src="/alexandros-tsiouris-dev/dizzy.png"
+                src="/dizzy.png"
                 alt="dizzy-memoji"
                 fill />
             </motion.div> :
@@ -43,7 +43,7 @@ export const IntroCard = (
               </div>
               <Image
                 className='bg-transparent'
-                src="/alexandros-tsiouris-dev/memoji.png"
+                src="/memoji.png"
                 alt="memoji"
                 fill />
             </motion.div>

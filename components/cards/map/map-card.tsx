@@ -78,7 +78,7 @@ export const MapCard = () => {
             animate={{ opacity: 1 }}>
             <Image
               className='bg-transparent'
-              src="/alexandros-tsiouris-dev/memoji.png"
+              src="/memoji.png"
               alt="memoji"
               fill />
           </motion.div>
