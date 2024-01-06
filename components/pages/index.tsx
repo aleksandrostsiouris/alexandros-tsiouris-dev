@@ -15,11 +15,12 @@ export const Index = (
   { mapToken }: { mapToken: string }
 ) => {
   const [introIsDragging, setIntroIsDragging] = useState<boolean>(false);
-  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 400);
+  const [isMobile, setIsMobile] = useState<boolean>();
   const ResponsiveGridLayout = useMemo(() => WidthProvider(RGL), []);
   const [scope, animate] = useAnimate();
 
   useLayoutEffect(() => {
+    if (typeof window === undefined) return;
     const isMobile = () => setIsMobile(window.innerWidth <= 400);
 
     window.addEventListener('resize', isMobile);
