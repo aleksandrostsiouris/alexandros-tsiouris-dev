@@ -42,7 +42,7 @@ export const IntroCard = (
         }
       </AnimatePresence>
       <div className='flex justify-center items-center px-10'>
-        <p className=''>
+        <p className='text-center'>
           I&apos;m
           <span
             className='text-3xl font-semibold font-pacifico tracking-widest'> Alex
