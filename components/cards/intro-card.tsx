@@ -55,7 +55,7 @@ export const IntroCard = (
           <span
             className='text-3xl font-semibold font-pacifico tracking-widest'> Alex
           </span>
-          , a full-stack software engineer located in Greece, interested in React, .NET, Node, Bun and all tech around those
+          , a full-stack software engineer located in Greece, love working with .NET, React, Node/Bun and more
         </p>
       </div>
 

@@ -1,5 +1,5 @@
 "use client"
-import React, { useMemo, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import "../../app/grid-layout.css";
 import { Layout, WidthProvider, Responsive as RGL } from "react-grid-layout";
 import { IntroCard } from '../cards/intro-card';
@@ -16,8 +16,23 @@ export const Index = (
 ) => {
   const [introIsDragging, setIntroIsDragging] = useState<boolean>(false);
   const ResponsiveGridLayout = useMemo(() => WidthProvider(RGL), []);
-  const staggerItems = stagger(0.1, { startDelay: 0.15 });
   const [scope, animate] = useAnimate();
+
+  useEffect(() => {
+    animate('span',
+      {
+        opacity: 1,
+        visibility: "visible"
+      },
+      {
+        delay: stagger(0.1,
+          {
+            startDelay: 0.3,
+            ease: "easeOut",
+            from: 'center'
+          })
+      })
+  }, [])
 
   const layouts: { [key: string]: Layout[] } = {
     xs: [
@@ -54,14 +69,7 @@ export const Index = (
       <div className='flex justify-center items-center w-full h-full max-w-[768px] sm:max-w-[768px] md:max-w-[996px] lg:max-w-[1024px] xl:max-w-[1024px]'>
         <motion.div
           ref={scope}
-          className='flex w-full h-full justify-center items-center'
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 1,
-            transition: {
-              delay: 0.5
-            }
-          }}>
+          className='flex w-full h-full justify-center items-center'        >
           <ResponsiveGridLayout
             onDragStart={(_, olditem) => {
               if (olditem.i === 'intro') {
@@ -95,41 +103,48 @@ export const Index = (
             rowHeight={231}
             useCSSTransforms
           >
-            <motion.div
+            <motion.span
+              initial={{ opacity: 0, visibility: 'hidden' }}
               key="intro"
               className='item flex border-2 border-zinc-200 dark:border-neutral-700 rounded-card w-full h-full items-center bg-white dark:bg-almost-primary justify-center hover:cursor-grab'>
               <IntroCard isDragging={introIsDragging} />
-            </motion.div>
-            <motion.div
-              key="map"
-              className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab'>
-              <MapCard mapToken={mapToken} />
-            </motion.div>
-            <motion.div
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, visibility: 'hidden' }}
               key="github"
               className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab'>
               <GithubCard />
-            </motion.div>
-            <motion.div
-              key="theme"
-              className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab'>
-              <ThemeCard />
-            </motion.div>
-            <motion.div
-              key="linkedin"
-              className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab' >
-              <LinkedInCard />
-            </motion.div>
-            <motion.div
-              key="spotify"
-              className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab'>
-              <SpotifyCard />
-            </motion.div>
-            <motion.div
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, visibility: 'hidden' }}
               key="email"
               className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab'>
               <EmailCard />
-            </motion.div>
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, visibility: 'hidden' }}
+              key="linkedin"
+              className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab' >
+              <LinkedInCard />
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, visibility: 'hidden' }}
+              key="map"
+              className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab'>
+              <MapCard mapToken={mapToken} />
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, visibility: 'hidden' }}
+              key="theme"
+              className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab'>
+              <ThemeCard />
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, visibility: 'hidden' }}
+              key="spotify"
+              className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab'>
+              <SpotifyCard />
+            </motion.span>
           </ResponsiveGridLayout>
         </motion.div>
 
