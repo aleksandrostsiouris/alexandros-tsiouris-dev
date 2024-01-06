@@ -10,6 +10,7 @@ import { LinkedInCard } from '../cards/linkedin-card';
 import { MapCard } from '../cards/map/map-card';
 import { SpotifyCard } from '../cards/spotify-card';
 import { EmailCard } from '../cards/email-card';
+import { cn } from '@/lib/utils';
 
 export const Index = (
   { mapToken }: { mapToken: string }
@@ -115,45 +116,81 @@ export const Index = (
             useCSSTransforms
           >
             <motion.span
-              initial={{ opacity: 0, visibility: 'hidden' }}
               key="intro"
-              className='item flex border-2 border-zinc-200 dark:border-neutral-700 rounded-card w-full h-full items-center bg-white dark:bg-almost-primary justify-center hover:cursor-grab'>
+              className={
+                cn(
+                  'item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab',
+                  !isMobile ? "active:cursor-grabbing" : ""
+                )
+              }
+              initial={{ opacity: 0, visibility: 'hidden' }}>
               <IntroCard isDragging={introIsDragging} />
             </motion.span>
             <motion.span
-              initial={{ opacity: 0, visibility: 'hidden' }}
               key="github"
-              className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab'>
+              className={
+                cn(
+                  'item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab',
+                  !isMobile ? "active:cursor-grabbing" : ""
+                )
+              }
+              initial={{ opacity: 0, visibility: 'hidden' }}>
               <GithubCard />
             </motion.span>
             <motion.span
-              initial={{ opacity: 0, visibility: 'hidden' }}
               key="email"
-              className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab'>
+              className={
+                cn(
+                  'item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab',
+                  !isMobile ? "active:cursor-grabbing" : ""
+                )
+              }
+              initial={{ opacity: 0, visibility: 'hidden' }}>
               <EmailCard />
             </motion.span>
             <motion.span
-              initial={{ opacity: 0, visibility: 'hidden' }}
               key="linkedin"
-              className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab' >
+              className={
+                cn(
+                  'item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab',
+                  !isMobile ? "active:cursor-grabbing" : ""
+                )
+              }
+              initial={{ opacity: 0, visibility: 'hidden' }}>
               <LinkedInCard />
             </motion.span>
             <motion.span
-              initial={{ opacity: 0, visibility: 'hidden' }}
               key="map"
-              className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab'>
+              className={
+                cn(
+                  'item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab',
+                  !isMobile ? "active:cursor-grabbing" : ""
+                )
+              }
+              initial={{ opacity: 0, visibility: 'hidden' }}>
               <MapCard mapToken={mapToken} />
             </motion.span>
             <motion.span
-              initial={{ opacity: 0, visibility: 'hidden' }}
               key="theme"
-              className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab'>
+              className={
+                cn(
+                  'item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab',
+                  !isMobile ? "active:cursor-grabbing" : ""
+                )
+              }
+              initial={{ opacity: 0, visibility: 'hidden' }}
+            >
               <ThemeCard />
             </motion.span>
             <motion.span
-              initial={{ opacity: 0, visibility: 'hidden' }}
               key="spotify"
-              className='item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab'>
+              className={
+                cn(
+                  'item border-2 border-zinc-200 dark:border-neutral-700 rounded-card items-center justify-center flex bg-white dark:bg-almost-primary hover:cursor-grab',
+                  !isMobile ? "active:cursor-grabbing" : ""
+                )
+              }
+              initial={{ opacity: 0, visibility: 'hidden' }}>
               <SpotifyCard />
             </motion.span>
           </ResponsiveGridLayout>
