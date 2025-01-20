@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { Montserrat, Caveat, Pacifico } from 'next/font/google'
 import './globals.css'
 import { cn } from '@/lib/utils'
-import { ThemeProvider } from '@/providers/theme-provider'
+import { Providers } from '@/providers/providers'
+import { PostHogProvider } from '@/providers/posthog-provider'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -34,20 +35,21 @@ export default function RootLayout({
     <html
       suppressHydrationWarning
       lang="en">
-      <body
-        suppressHydrationWarning
-        className={cn(
-          pacifico.variable,
-          montserrat.className,
-          montserrat.variable,
-          caveat.variable,
-          "bg-background dark:bg-background scrollbar-none"
-        )}>
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
-
-      </body>
+      <PostHogProvider>
+        <body
+          suppressHydrationWarning
+          className={cn(
+            pacifico.variable,
+            montserrat.className,
+            montserrat.variable,
+            caveat.variable,
+            "bg-background dark:bg-background scrollbar-none"
+          )}>
+          <Providers>
+            {children}
+          </Providers>
+        </body>
+      </PostHogProvider>
     </html>
   )
 }
